@@ -1,7 +1,6 @@
 import java.util.Date;
 import java.util.Scanner;
 import java.lang.StringBuffer;
-import java.text.DateFormat;
 
 public class ChatCheapyT{
 
@@ -38,6 +37,7 @@ public class ChatCheapyT{
       if (!input.toLowerCase().contains("bitte"))
         return "Wie ist das Zauberwort?";
       else 
+        // no "bitte" in input
         return "Als Antwort habe ich ein YouTube-Video generiert: https://youtu.be/dQw4w9WgXcQ.";
     } else
       return null;
@@ -53,11 +53,13 @@ public class ChatCheapyT{
 
   private static String handleScream(String input){
     int uppers = 0;
+    // count upper case chars in input
     for (char s : input.toCharArray()) {
       if (Character.isUpperCase(s))
         uppers++;
     }
-    if (uppers >= input.length() / 2) 
+    
+    if (uppers >= input.length() / 2)   // half or more chars are upper case
       return "Bitte schreien Sie mich nicht an!";
     else
       return null;
@@ -66,6 +68,7 @@ public class ChatCheapyT{
 
   private static String handleReverse(String input){
     if (input.toLowerCase().startsWith("umdrehen:")) {
+      // create StringBuffer with input after keyword
       StringBuffer inputString = new StringBuffer(input.split(":")[1]);
       return inputString.reverse().toString(); 
     } else {
@@ -77,12 +80,14 @@ public class ChatCheapyT{
   private static String handleAdd(String input){
     if (input.toLowerCase().startsWith("addiere")) {
       try {
+        // parse two doubles out of input
         double a = Double.parseDouble(input.split(" ")[1]);
         double b = Double.parseDouble(input.split(" ")[2]);
 
         return a + " plus " + b + " ist gleich " + (a + b) + "! Take that, ChatGPT!";
 
       } catch (NumberFormatException e) {
+        // throw when Numbers cannot be parsed
         throw new IllegalArgumentException("Summanten meussen vom Typ double sein!");
       }
 
@@ -93,6 +98,7 @@ public class ChatCheapyT{
 
   private static String handleTime(String input) {
     if (input.equals("Zeitstempel")) {
+      // get timestamp
       Date date = new Date();
       return date.toString();
 
