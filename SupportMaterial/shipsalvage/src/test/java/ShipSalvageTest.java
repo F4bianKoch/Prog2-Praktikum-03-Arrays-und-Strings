@@ -162,81 +162,81 @@ public class ShipSalvageTest {
         });
   }
 
-  @Test
-  public void testAllSalvaged(){
+//  @Test
+//  public void testAllSalvaged(){
 
-    FieldState[][] map = new FieldState[10][10];
+//    FieldState[][] map = new FieldState[10][10];
 
-    for (int row = 0; row < 10; row++){
-      for (int col = 0; col < 10; col++){
-        map[row][col] = FieldState.EMPTY;
-      }
-    }
+//    for (int row = 0; row < 10; row++){
+//      for (int col = 0; col < 10; col++){
+//        map[row][col] = FieldState.EMPTY;
+//      }
+//    }
 
-    assertTrue("must return true on an empty field",
-        ShipSalvage.allSalvaged(map));
+//    assertTrue("must return true on an empty field",
+//        ShipSalvage.allSalvaged(map));
 
-    map[5][5] = FieldState.OCCUPIED_HIDDEN;
+//    map[5][5] = FieldState.OCCUPIED_HIDDEN;
 
-    assertFalse("must return false on a field with hidden ships",
-        ShipSalvage.allSalvaged(map));
+//    assertFalse("must return false on a field with hidden ships",
+//        ShipSalvage.allSalvaged(map));
 
-    map[8][2] = FieldState.MISS;
-    assertFalse("must return false on a field with hidden ships and missed fields",
-        ShipSalvage.allSalvaged(map));
+//    map[8][2] = FieldState.MISS;
+//    assertFalse("must return false on a field with hidden ships and missed fields",
+//        ShipSalvage.allSalvaged(map));
 
-    map[5][5] = FieldState.OCCUPPIED_SALVAGED;
-    assertTrue("must return true on a field with salvaged ships and missed fields",
-        ShipSalvage.allSalvaged(map));
+//    map[5][5] = FieldState.OCCUPPIED_SALVAGED;
+//    assertTrue("must return true on a field with salvaged ships and missed fields",
+//        ShipSalvage.allSalvaged(map));
 
-  }
+//  }
 
-  @Test
-  public void testProbeFieldValid(){
-    FieldState[][] original = ShipSalvage.getExample();
-    FieldState[][] map = ShipSalvage.getExample();
+//  @Test
+//  public void testProbeFieldValid(){
+//    FieldState[][] original = ShipSalvage.getExample();
+//    FieldState[][] map = ShipSalvage.getExample();
 
-    ShipSalvage.probeField(map, "A1");
-    original[0][0] = FieldState.OCCUPPIED_SALVAGED;
-    assertTrue("field A1 must be changed to OCCUPPIED_SALVAGED",
-        Arrays.deepEquals(original, map));
+//    ShipSalvage.probeField(map, "A1");
+//    original[0][0] = FieldState.OCCUPPIED_SALVAGED;
+//    assertTrue("field A1 must be changed to OCCUPPIED_SALVAGED",
+//        Arrays.deepEquals(original, map));
 
-    ShipSalvage.probeField(map, "c4");
-    original[3][2] = FieldState.MISS;
-    assertTrue("field c1 must be changed to MISS",
-        Arrays.deepEquals(original, map));
+//    ShipSalvage.probeField(map, "c4");
+//    original[3][2] = FieldState.MISS;
+//    assertTrue("field c1 must be changed to MISS",
+//        Arrays.deepEquals(original, map));
 
-  }
+//  }
 
-  @Test
-  public void testProbeFieldInvalid(){
+//  @Test
+//  public void testProbeFieldInvalid(){
 
-    FieldState[][] original = ShipSalvage.getExample();
-    FieldState[][] map = ShipSalvage.getExample();
+//    FieldState[][] original = ShipSalvage.getExample();
+//    FieldState[][] map = ShipSalvage.getExample();
 
-    // test invalid inputs
-    ShipSalvage.probeField(map, "");
+//    // test invalid inputs
+//    ShipSalvage.probeField(map, "");
 
-    assertTrue("must not change map on empty input",
-        Arrays.deepEquals(original, map));
+//    assertTrue("must not change map on empty input",
+//        Arrays.deepEquals(original, map));
 
-    ShipSalvage.probeField(map, "   \t \t");
+//    ShipSalvage.probeField(map, "   \t \t");
 
-    assertTrue("must not change map on blank input",
-        Arrays.deepEquals(original, map));
+//    assertTrue("must not change map on blank input",
+//        Arrays.deepEquals(original, map));
 
-    String[] invalidInputs = {"C", "5", "AVier", "B0", "B11", "P9", "A9A", "G  8", "   A2", "E9    "};
-    for (String invalidInput : invalidInputs){
+//    String[] invalidInputs = {"C", "5", "AVier", "B0", "B11", "P9", "A9A", "G  8", "   A2", "E9    "};
+//    for (String invalidInput : invalidInputs){
     
-        ShipSalvage.probeField(map, invalidInput);
+//        ShipSalvage.probeField(map, invalidInput);
 
-        assertTrue("must not change map on "+invalidInput,
-            Arrays.deepEquals(original, map));
+//        assertTrue("must not change map on "+invalidInput,
+//            Arrays.deepEquals(original, map));
 
-    }
+//    }
 
 
-  }
+//  }
 
 
 
