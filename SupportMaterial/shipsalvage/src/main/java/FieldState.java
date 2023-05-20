@@ -26,4 +26,9 @@ public enum FieldState {
         } 
         return null;
     }
+
+    public char getOutput() {
+        return output;
+    }
+
 }

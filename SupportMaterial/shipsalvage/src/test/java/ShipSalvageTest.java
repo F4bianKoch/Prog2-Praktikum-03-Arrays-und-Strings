@@ -162,16 +162,17 @@ public class ShipSalvageTest {
         });
   }
 
-//  @Test
-//  public void testAllSalvaged(){
+  @Test
+  public void testAllSalvaged(){
 
-//    FieldState[][] map = new FieldState[10][10];
+    FieldState[][] map = new FieldState[10][10];
 
-//    for (int row = 0; row < 10; row++){
-//      for (int col = 0; col < 10; col++){
-//        map[row][col] = FieldState.EMPTY;
-//      }
-//    }
+    for (int row = 0; row < 10; row++){
+      for (int col = 0; col < 10; col++){
+        map[row][col] = FieldState.EMPTY;
+      }
+    }
+  }
 
 //    assertTrue("must return true on an empty field",
 //        ShipSalvage.allSalvaged(map));
@@ -239,6 +240,4 @@ public class ShipSalvageTest {
 //  }
 
 
-
-  
 }

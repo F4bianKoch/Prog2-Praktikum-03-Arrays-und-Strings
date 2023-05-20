@@ -15,7 +15,7 @@ public class ShipSalvage {
   };
 
   public static void main(String[] args) {
-      
+    printMap(getExample(), true);      
   } 
 
   public static FieldState[][] getExample() {
@@ -49,6 +49,46 @@ public class ShipSalvage {
 
     if (map.length != 10)
       throw new IllegalArgumentException("Map needs 10 rows");
+  }
+
+  public static void printMap(FieldState[][] map, boolean showHidden) {
+    checkValidMap(map);   // validate map
+
+    System.out.println(" ABCDEFGHIJ"); 
+    System.out.println("+-----------+");
+
+    for (int i = 0; i < map.length; i++) {
+      System.out.print(i + "|");
+
+      for (int j = 0; j < map[i].length; j++) {
+        char value = map[i][j].getOutput();
+
+        if (showHidden) {
+          System.out.print(value);
+        } else {
+          if (value != '#')
+            System.out.print(value);
+          else
+            System.out.print(' ');
+        }
+      }
+      
+      System.out.print("|\n");
+    }
+
+    System.out.println("+-----------+");
+  }
+
+  public static boolean allSalvaged(FieldState[][] map) {
+    checkValidMap(map);
+
+    for (FieldState[] mapRow : map) {
+      for (FieldState mapColumn : mapRow) {
+        if (mapColumn == FieldState.OCCUPIED_HIDDEN)
+          return false;
+      }
+    }
+    return true;
   }
 
 }
