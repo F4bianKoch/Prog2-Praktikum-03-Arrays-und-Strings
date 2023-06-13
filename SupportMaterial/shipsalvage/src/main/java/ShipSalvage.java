@@ -20,6 +20,8 @@ public class ShipSalvage {
     Scanner input = new Scanner(System.in);
     FieldState[][] map = getExample();
 
+    System.out.println(FieldState.fromOutput('h'));
+
     while (!allSalvaged(map)) {
       probeField(map, input.next());
       printMap(map, false);
